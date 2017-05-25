@@ -4,8 +4,10 @@ var isF = false;
 
 $(document).ready(function() {
   $.get("http://ip-api.com/json", function( data ){
-    $( "#location" ).html( data.city+", " + data.countryCode );
-    $.get(url+data.city+data.countryCode+"&units=metric"+apiKey, function( data ){
+    var city = data.city;
+    var country = data.countryCode;
+    $( "#location" ).html(city+", " + country);
+    $.get(url+city+","+country+"&units=metric"+apiKey, function( data ){
       $( "#temp" ).html( data.main.temp + "°C" );
       $( "#weather" ).html( data.weather[0].main );
       // $( "#icon" ).attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png")
@@ -21,10 +23,12 @@ $(document).ready(function() {
         }
       });
     })
+    console.log(city);
   });
 });
 
-req = $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=London,uk&callback=?'+apiKey);
+req = $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London,uk&callback=?"+apiKey);
+
 
 req.then(function(resp) {
   var prefix = 'wi wi-';
