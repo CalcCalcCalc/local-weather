@@ -1,0 +1,23 @@
+/*
+Font Manifest:
+font-family: 'Indie Flower', cursive;
+font-family: 'Open Sans', sans-serif;
+*/
+
+body{
+  /*gradient needs to change either side of 20C*/
+  background: linear-gradient(red, yellow);
+  background-repeat: no-repeat;
+  background-position:center;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+#icon{
+  color: yellow
+}
+#main{
+  margin-top: 25px;
+  height: 200px;
+  width: 400px;
+}
