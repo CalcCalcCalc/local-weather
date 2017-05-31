@@ -1,51 +1,85 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
   <meta charset="UTF-8">
-  <title>Local Weather</title>
+  <title>Weather</title>
   <link rel="stylesheet" href="https://erikflowers.github.io/weather-icons/css/weather-icons.min.css">
- <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-      <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <div class="container-fluid text-center" id="main">
-  <h2>Current Weather</h2>
-  <div id="location">
-    <p>
-    <!--Location-->Fetching...
-    </p>
-  </div>
-  <div>
-    <p>
-    <div id="temp" >
-      <!--Temperature-->Fetching...
+  <div class="linear-gradient">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3">
+        </div>
+
+        <!-- main column -->
+        <main class="col-xs-6">
+          <header class="row">
+            <h1 class="col-xs-12 text-center">Weather</h1>
+          </header>
+
+          <!-- search bar -->
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for town...">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- info box -->
+          <div class="row info-box">
+            <span class="col-xs-6">
+                <p>
+                  In <strong class="information location">Fetching... </strong>
+                </p>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p>
+                    it is: <strong class="information temp">Fetching...</strong>
+                  </p>
+                </div>
+                <div class="col-xs-6">
+                <button class="btn btn-primary-outline btn-CF"><span class="C-text">°C</span>|<span class="F-text">°F</span></button>
+          </div>
+      </div>
+
+      </span>
+
+      <div class="col-xs-6">
+        <div class="information weather text-right">Fetching...</div>
+        <div class="text-right weather-icon"></div>
+      </div>
     </div>
-    </p>
-    <!--<button class="btn btn-secondary" id="CF">
-      °F
-    </button>-->
+
+    <!-- footer -->
+    <footer class="text-right">
+      <a href="http://codepen.io/Calc/full/JXgqMj/" target="_blank">
+    					<sub>
+    						By Alec
+    					</sub>
+    				</a>
+    </footer>
+
+    </main>
+    <div class="col-xs-3">
+    </div>
+  </div>
 
   </div>
-  <div id="weather">
-    <!--Weather-->Fetching...
-  </div><br />
-  <div id="icon" >
-
-
-  </div>
-  			<!--<div class="text-right">
-				<a href="http://codepen.io/Calc/full/JXgqMj/" target="_blank">
-					<sub>
-						By Alec
-					</sub>
-				</a>
-			</div>-->
-</div>
+  <!-- /.container -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 
-    <script src="js/index.js"></script>
-
+  <script src="js/index.js"></script>
 </body>
+
 </html>

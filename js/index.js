@@ -6,24 +6,23 @@ $(document).ready(function() {
   $.get("http://ip-api.com/json", function( data ){
     var city = data.city;
     var country = data.countryCode;
-    $( "#location" ).html(city+", " + country);
+    $( ".location" ).html(city+", " + country);
     $.get(url+city+","+country+"&units=metric"+apiKey, function( data ){
-      $( "#temp" ).html( data.main.temp + "°C" );
-      $( "#weather" ).html( data.weather[0].main );
-      // $( "#icon" ).attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png")
-      $( "#CF" ).on("click", null, data, function(){
+      $( ".temp" ).html( data.main.temp + "°C" );
+      $( ".weather" ).html( data.weather[0].main );
+      //$( "#icon" ).attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png")
+      $( ".btn-CF" ).on("click", null, data, function(){
         if (!isF){
-          $( "#CF" ).html("°C")
-          $( "#temp" ).html( data.main.temp*9/5+32 + "°F");
+          $( ".btn-CF" ).html("°C")
+          $( ".temp" ).html( data.main.temp*9/5+32 + "°F");
           isF = true;
         } else {
-          $( "#CF" ).html("°F")
-          $( "#temp" ).html( data.main.temp + "°C");
+          $( ".btn-CF" ).html("°F")
+          $( ".temp" ).html( data.main.temp + "°C");
           isF = false;
         }
       });
     })
-    console.log(city);
   });
 });
 
@@ -43,7 +42,7 @@ req.then(function(resp) {
   // Finally tack on the prefix.
   icon = prefix + icon;
 
-   $("#icon").html("<i class=\""+icon+"\" style=\"font-size:300px;\" ></i>");
+   $(".weather-icon").html("<i class=\""+icon+"\" style=\"font-size:64px;\" ></i>");
 });
 
 var weatherIcons = {

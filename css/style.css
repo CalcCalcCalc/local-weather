@@ -1,23 +1,44 @@
 /*
 Font Manifest:
-font-family: 'Indie Flower', cursive;
-font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto Mono', monospace;
 */
 
 body{
   /*gradient needs to change either side of 20C*/
-  background: linear-gradient(red, yellow);
-  background-repeat: no-repeat;
-  background-position:center;
-  font-family: 'Open Sans', sans-serif;
+  background-color: yellow;
+  font-family: 'Roboto Mono', monospace;
+  font-style: thin;
   color: white;
 }
 
-#icon{
-  color: yellow
+.linear-gradient {
+    background: linear-gradient(red, yellow);
 }
-#main{
-  margin-top: 25px;
-  height: 200px;
-  width: 400px;
+
+.info-box{
+  margin-top: 10%;
+}
+
+.form-control{
+  color: white;
+  background-color: transparent;
+}
+.btn-primary-outline{
+  font-family: 'Roboto Mono', monospace;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.btn-primary-outline:hover{
+  border-color: transparent;
+  color: grey;
+  background-color: transparent;
+}
+.btn-primary-outline:active{
+  background-color: transparent;
+}
+.btn-primary-outline:focus{
+  color: grey;
+  border-color: transparent;
+  background-color: transparent;
 }
