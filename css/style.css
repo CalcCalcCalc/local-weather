@@ -11,8 +11,17 @@ body{
   color: white;
 }
 
+main{
+  margin-top: 10%;
+}
+
+h1{
+  margin-bottom: 10%;
+}
+
 .linear-gradient {
-    background: linear-gradient(red, yellow);
+    background: linear-gradient(to bottom, red, yellow);
+    height: 700px;
 }
 
 .info-box{
@@ -24,9 +33,11 @@ body{
   background-color: transparent;
 }
 .btn-primary-outline{
+  font-style: medium;
   font-family: 'Roboto Mono', monospace;
   border-color: transparent;
   background-color: transparent;
+  color: grey;
 }
 
 .btn-primary-outline:hover{
@@ -41,4 +52,12 @@ body{
   color: grey;
   border-color: transparent;
   background-color: transparent;
+}
+
+.btn-search{
+  color: grey;
+}
+
+.temp-span .btn-group{
+  display: inline-block;
 }

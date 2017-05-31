@@ -6,23 +6,45 @@ $(document).ready(function() {
   $.get("http://ip-api.com/json", function( data ){
     var city = data.city;
     var country = data.countryCode;
-    $( ".location" ).html(city+", " + country);
     $.get(url+city+","+country+"&units=metric"+apiKey, function( data ){
-      $( ".temp" ).html( data.main.temp + "°C" );
+      updateForm(data);
+    })
+    $(".btn-search").on("click", function(){
+      var searchTerm = $(".form-control").val();
+      $.get(url+searchTerm+"&units=metric"+apiKey, function( data ){
+        updateForm(data);
+      })
+    });
+
+
+    function updateForm(data){
+      $( ".location" ).html(city+", " + country);
+      $( ".temp" ).html( (data.main.temp).toFixed(1));
+      $(".C-text").css("color", "white");
+      $(".F-text").css("color", "grey");
+      if ((data.main.temp).toFixed(1) > 21.0){
+        $(".linear-gradient").css("background", "linear-gradient(to bottom, red, yellow)");
+      } else {
+        $(".linear-gradient").css("background", "linear-gradient(to bottom, black, blue)");
+      }
       $( ".weather" ).html( data.weather[0].main );
       //$( "#icon" ).attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png")
       $( ".btn-CF" ).on("click", null, data, function(){
         if (!isF){
-          $( ".btn-CF" ).html("°C")
-          $( ".temp" ).html( data.main.temp*9/5+32 + "°F");
+          //$( ".btn-CF" ).html("°C")
+          $(".C-text").css("color", "grey");
+          $(".F-text").css("color", "white");
+          $( ".temp" ).html( (data.main.temp*9/5+32).toFixed(1));
           isF = true;
         } else {
-          $( ".btn-CF" ).html("°F")
-          $( ".temp" ).html( data.main.temp + "°C");
+          //$( ".btn-CF" ).html("°F")
+          $(".C-text").css("color", "white");
+          $(".F-text").css("color", "grey");
+          $( ".temp" ).html( (data.main.temp).toFixed(1));
           isF = false;
         }
       });
-    })
+    }
   });
 });
 
@@ -37,6 +59,8 @@ req.then(function(resp) {
   // If we are not in the ranges mentioned above, add a day/night prefix.
   if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
     icon = 'day-' + icon;
+  } else {
+    icon = "night-" + icon;
   }
 
   // Finally tack on the prefix.

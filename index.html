@@ -28,9 +28,9 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for town...">
+                <input type="text" class="form-control" placeholder="Search for city...">
                 <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                  <button class="btn btn-default btn-search" type="button"><i class="fa fa-search"></i></button>
                 </span>
               </div>
             </div>
@@ -38,48 +38,48 @@
 
           <!-- info box -->
           <div class="row info-box">
-            <span class="col-xs-6">
-                <p>
-                  In <strong class="information location">Fetching... </strong>
-                </p>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p>
-                    it is: <strong class="information temp">Fetching...</strong>
-                  </p>
-                </div>
-                <div class="col-xs-6">
-                <button class="btn btn-primary-outline btn-CF"><span class="C-text">°C</span>|<span class="F-text">°F</span></button>
+            <div class="col-xs-8 inline">
+              <p>
+                In <strong class="information location">Loading... </strong>
+              </p>
+              <br/>
+              <div class="">
+                <label class="temp-span">it is: <strong class="information temp">00.0</strong></label>
+                <button class="btn btn-primary-outline btn-xs btn-CF">
+                      <span class="C-text">°C</span>|<span class="F-text">°F</span>
+                    </button>
+              </div>
+
+            </div>
+
+            <div class="col-xs-4">
+              <div class="information weather text-right">
+                <p>Loading...</p>
+              </div>
+              <br/>
+              <div class="text-right weather-icon"></div>
+            </div>
           </div>
-      </div>
-
-      </span>
-
-      <div class="col-xs-6">
-        <div class="information weather text-right">Fetching...</div>
-        <div class="text-right weather-icon"></div>
-      </div>
-    </div>
-
-    <!-- footer -->
-    <footer class="text-right">
-      <a href="http://codepen.io/Calc/full/JXgqMj/" target="_blank">
+          <!-- footer -->
+          <footer class="text-right">
+            <a href="http://codepen.io/Calc/full/JXgqMj/" target="_blank">
     					<sub>
     						By Alec
     					</sub>
     				</a>
-    </footer>
+          </footer>
 
-    </main>
-    <div class="col-xs-3">
+        </main>
+        <div class="col-xs-3">
+        </div>
+      </div>
+
     </div>
-  </div>
+    <!-- /.container -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 
+    <script src="js/index.js"></script>
   </div>
-  <!-- /.container -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-
-  <script src="js/index.js"></script>
 </body>
 
 </html>
