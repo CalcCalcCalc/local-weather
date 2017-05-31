@@ -3,6 +3,7 @@ var apiKey = "&appid=e1ca66a5a7418812f6356c32b9603fe6";
 var isF = false;
 
 $(document).ready(function() {
+  
   $.get("http://ip-api.com/json", function( data ){
     var city = data.city;
     var country = data.countryCode;
@@ -16,8 +17,9 @@ $(document).ready(function() {
       })
     });
 
-
     function updateForm(data){
+      city = data.name;
+      country = data.sys.country;
       $( ".location" ).html(city+", " + country);
       $( ".temp" ).html( (data.main.temp).toFixed(1));
       $(".C-text").css("color", "white");
@@ -44,13 +46,29 @@ $(document).ready(function() {
           isF = false;
         }
       });
+      req = $.getJSON("http://api.openweathermap.org/data/2.5/weather?q="+city+","+country+"&callback=?"+apiKey);
+      req.then(function(resp) {
+        var prefix = 'wi wi-';
+        var code = resp.weather[0].id;
+        var icon = weatherIcons[code].icon;
+
+        // If we are not in the ranges mentioned above, add a day/night prefix.
+        if (code == 800){
+          icon = "day-" + icon;
+        }
+
+        // Finally tack on the prefix.
+        icon = prefix + icon;
+
+         $(".weather-icon").html("<i class=\""+icon+"\" style=\"font-size:64px;\" ></i>");
+      });
     }
   });
 });
 
-req = $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London,uk&callback=?"+apiKey);
+//req = $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London,uk&callback=?"+apiKey);
 
-
+/*
 req.then(function(resp) {
   var prefix = 'wi wi-';
   var code = resp.weather[0].id;
@@ -68,7 +86,7 @@ req.then(function(resp) {
 
    $(".weather-icon").html("<i class=\""+icon+"\" style=\"font-size:64px;\" ></i>");
 });
-
+*/
 var weatherIcons = {
   "200": {
     "label": "thunderstorm with light rain",
