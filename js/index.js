@@ -74,6 +74,7 @@ $(document).ready(function() {
 //req = $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London,uk&callback=?"+apiKey);
 
 /*
+
 req.then(function(resp) {
   var prefix = 'wi wi-';
   var code = resp.weather[0].id;
