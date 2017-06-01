@@ -38,20 +38,23 @@ h1{
   border-color: transparent;
   background-color: transparent;
   color: grey;
+  padding-bottom: 6px;
 }
 
 .btn-primary-outline:hover{
   border-color: transparent;
   color: grey;
-  background-color: transparent;
+  background-color: rgba(255,255,255,0.07);
 }
 .btn-primary-outline:active{
   background-color: transparent;
 }
 .btn-primary-outline:focus{
   color: grey;
-  border-color: transparent;
-  background-color: transparent;
+}
+
+.CF{
+  font-size: 11pt;
 }
 
 .btn-search{

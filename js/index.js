@@ -1,21 +1,30 @@
 var url = "http://api.openweathermap.org/data/2.5/weather?q=";
 var apiKey = "&appid=e1ca66a5a7418812f6356c32b9603fe6";
 var isF = false;
+var temp = 0;
 
 $(document).ready(function() {
-  
+
   $.get("http://ip-api.com/json", function( data ){
-    var city = data.city;
-    var country = data.countryCode;
-    $.get(url+city+","+country+"&units=metric"+apiKey, function( data ){
-      updateForm(data);
-    })
+    var searchTerm = data.city + ", " + data.countryCode;
     $(".btn-search").on("click", function(){
-      var searchTerm = $(".form-control").val();
-      $.get(url+searchTerm+"&units=metric"+apiKey, function( data ){
+      searchTerm = $(".form-control").val();
+      setData(searchTerm);
+    });
+    $(".form-control").keypress(function(e){
+      var key = e.which;
+      if (key == 13){
+        searchTerm = $(".form-control").val();
+        setData(searchTerm);
+      }
+    });
+    setData(searchTerm);
+
+    function setData(term){
+      $.get(url+term+"&units=metric"+apiKey, function( data ){
         updateForm(data);
       })
-    });
+    }
 
     function updateForm(data){
       city = data.name;
@@ -24,14 +33,15 @@ $(document).ready(function() {
       $( ".temp" ).html( (data.main.temp).toFixed(1));
       $(".C-text").css("color", "white");
       $(".F-text").css("color", "grey");
-      if ((data.main.temp).toFixed(1) > 21.0){
+      if ((data.main.temp).toFixed(1) > 18.0){
         $(".linear-gradient").css("background", "linear-gradient(to bottom, red, yellow)");
       } else {
         $(".linear-gradient").css("background", "linear-gradient(to bottom, black, blue)");
       }
-      $( ".weather" ).html( data.weather[0].main );
+      $( ".weather" ).html( data.weather[0].description );
       //$( "#icon" ).attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png")
       $( ".btn-CF" ).on("click", null, data, function(){
+        console.log(isF);
         if (!isF){
           //$( ".btn-CF" ).html("°C")
           $(".C-text").css("color", "grey");
@@ -46,22 +56,17 @@ $(document).ready(function() {
           isF = false;
         }
       });
-      req = $.getJSON("http://api.openweathermap.org/data/2.5/weather?q="+city+","+country+"&callback=?"+apiKey);
-      req.then(function(resp) {
+      /*req = $.getJSON("http://api.openweathermap.org/data/2.5/weather?q="+city+","+country+"&callback=?"+apiKey);
+      req.then(function(resp) {*/
         var prefix = 'wi wi-';
-        var code = resp.weather[0].id;
+        var code = data.weather[0].id;
         var icon = weatherIcons[code].icon;
-
-        // If we are not in the ranges mentioned above, add a day/night prefix.
-        if (code == 800){
-          icon = "day-" + icon;
-        }
 
         // Finally tack on the prefix.
         icon = prefix + icon;
 
          $(".weather-icon").html("<i class=\""+icon+"\" style=\"font-size:64px;\" ></i>");
-      });
+      //});
     }
   });
 });
@@ -335,7 +340,7 @@ var weatherIcons = {
 
   "800": {
     "label": "clear sky",
-    "icon": "sunny"
+    "icon": "day-sunny"
   },
 
   "801": {
